@@ -53,7 +53,11 @@ export default async function fetchContent(state, params, opts) {
     requestHeaders.cookie = loginToken;
   }
 
+  console.log('Fetching ', originUrl);
+
   const resp = await fetch(originUrl, { headers: { ...requestHeaders } });
+
+  console.log('Got ', resp);
 
   if (!resp.ok) {
     return { ...state, error: { code: resp.status, message: resp.statusText } };
