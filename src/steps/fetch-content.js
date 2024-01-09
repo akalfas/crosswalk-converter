@@ -24,6 +24,11 @@ function defaultAppendSuffix(mappedPath, suffix) {
 }
 
 export default async function fetchContent(state, params, opts) {
+
+  console.log('fetchContent State ', state);
+  console.log('fetchContent Params ', params);
+  console.log('fetchContent Opts ', opts);
+
   const { path, queryString } = state;
   const { authorization, loginToken } = params;
   const { converterCfg, mappingCfg } = opts;
