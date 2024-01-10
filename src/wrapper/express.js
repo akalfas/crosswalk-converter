@@ -32,7 +32,7 @@ const {
   AEM_USER, AEM_PASSWORD, AEM_TOKEN, AEM_LOGIN_TOKEN,
 } = process.env;
 const LOCALHOST = 'http://127.0.0.1';
-const CACHE = {};
+const _CACHE = {};
 
 /**
  * Alternative implementation of m2html that uses the helix-html-pipeline to render the document.
@@ -260,10 +260,10 @@ export function toExpress(pipe, opts = {}) {
       };
 
       // check if the file was already served
-      if (CACHE[originalUrl] && !queryString) {
-        sendRes(CACHE[originalUrl]);
-        return;
-      }
+      // if (CACHE[originalUrl] && !queryString) {
+      //   sendRes(CACHE[originalUrl]);
+      //   return;
+      // }
 
       // otherwise run the pipeline
       const fn = toRuntime(pipe, { ...opts, originalUrl });
@@ -274,7 +274,7 @@ export function toExpress(pipe, opts = {}) {
         ...params,
       }).then((state) => {
         if (state.statusCode === 200) {
-          CACHE[originalUrl] = state;
+          // CACHE[originalUrl] = state;
         }
         sendRes(state);
       });
