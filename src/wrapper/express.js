@@ -254,7 +254,7 @@ export function toExpress(pipe, opts = {}) {
       const reqUrl = new URL(`${protocol}://${req.get('host')}${originalUrl}`);
       const queryString = reqUrl.search.substring(1);
       const sendRes = ({ statusCode, body, headers }) => {
-        res.set({ ...headers, 'cache-control': 'privat, max-age=300' });
+        res.set({ ...headers, 'cache-control': 'private, max-age=300' });
         res.status(statusCode);
         res.send(body);
       };
